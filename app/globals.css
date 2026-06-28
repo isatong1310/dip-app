@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────
+   DIP Design System — MASTER TOKENS
+   焚き火の夜、帰り道の車内
+─────────────────────────────────────────── */
+
+@theme inline {
+  /* Colors */
+  --color-ink:        #0F0E0D;
+  --color-charcoal:   #1C1A17;
+  --color-ember:      #FF5C2B;
+  --color-ember-dim:  #CC4922;
+  --color-butter:     #F5C842;
+  --color-sage:       #7BC67E;
+  --color-warm-gray:  #8A8277;
+  --color-cream:      #F2EDE7;
+  --color-surface:    #1C1A17;
+
+  /* Fonts */
+  --font-display:  'Syne', sans-serif;
+  --font-body:     'Plus Jakarta Sans', sans-serif;
+  --font-impact:   'Bebas Neue', cursive;
+}
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=Bebas+Neue&display=swap');
+
+/* ── Base Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --grain-opacity: 0.035;
+}
+
+body {
+  background-color: #0F0E0D;
+  color: #F2EDE7;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Grain Texture Overlay ── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ── Typography Utilities ── */
+.font-display  { font-family: 'Syne', sans-serif; }
+.font-body     { font-family: 'Plus Jakarta Sans', sans-serif; }
+.font-impact   { font-family: 'Bebas Neue', cursive; }
+
+/* ── Ember Button ── */
+.btn-ember {
+  background-color: #FF5C2B;
+  color: #0F0E0D;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-ember:active {
+  background-color: #CC4922;
+}
+
+/* ── Outline Button ── */
+.btn-outline {
+  background: transparent;
+  color: #F2EDE7;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  border-radius: 16px;
+  border: 1px solid rgba(242,237,231,0.2);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-outline:active {
+  background: rgba(242,237,231,0.06);
+}
+
+/* ── Card Surface ── */
+.card-surface {
+  background: #1C1A17;
+  border: 1px solid rgba(242,237,231,0.08);
+  border-radius: 20px;
+}
+
+/* ── Number Pad ── */
+.numpad-key {
+  background: #1C1A17;
+  border: 1px solid rgba(242,237,231,0.1);
+  border-radius: 14px;
+  color: #F2EDE7;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  transition: background 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.numpad-key:active {
+  background: rgba(255, 92, 43, 0.15);
+  border-color: rgba(255, 92, 43, 0.4);
+}
+
+/* ── Bottom Sheet ── */
+.bottom-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,9,8,0.7);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+}
+
+/* ── Scrollbar hide ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
