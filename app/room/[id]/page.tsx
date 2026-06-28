@@ -29,10 +29,11 @@ interface Member {
    Data
 ───────────────────────────────────────── */
 const SITUATIONS: Situation[] = [
-  { id: "drive",  emoji: "🚗", label: "ドライブ帰り", sub: "車内専用。声だけでも遊べる",   color: "#FF5C2B", rgb: "255,92,43"  },
-  { id: "train",  emoji: "🚃", label: "電車帰り",     sub: "無言でニヤニヤできる写真重視", color: "#F5C842", rgb: "245,200,66" },
-  { id: "party",  emoji: "🍻", label: "飲み会明け",   sub: "昨夜のやらかし暴露",           color: "#7BC67E", rgb: "123,198,126"},
-  { id: "custom", emoji: "✏️", label: "カスタム",     sub: "自分たちでお題を作る",          color: "#38B6FF", rgb: "56,182,255" },
+  { id: "drive",  emoji: "🚗", label: "ドライブ帰り", sub: "車内向け",             color: "#FF5C2B", rgb: "255,92,43"  },
+  { id: "train",  emoji: "🚃", label: "電車帰り",     sub: "無言で遊べる写真重視", color: "#F5C842", rgb: "245,200,66" },
+  { id: "party",  emoji: "🍻", label: "飲み会明け",   sub: "昨夜の暴露",           color: "#7BC67E", rgb: "123,198,126"},
+  { id: "love",   emoji: "💕", label: "恋愛縛り",     sub: "カップル・ドキドキ枠", color: "#FF9AB2", rgb: "255,154,178"},
+  { id: "custom", emoji: "✏️", label: "カスタム",     sub: "自分たちで作る",        color: "#38B6FF", rgb: "56,182,255" },
 ];
 
 const Q_COUNT_OPTIONS = [
@@ -230,7 +231,7 @@ function PhaseCreate({ onCreated }: { onCreated: (tripName: string) => void }) {
                   }}
                   whileTap={{ scale: 0.96 }}
                   transition={{ type: "spring" as const, stiffness: 400, damping: 22 }}
-                  style={{ padding: "16px 14px", borderRadius: 16, border: "1.5px solid", cursor: "pointer", textAlign: "left" as const, display: "flex", flexDirection: "column" as const, gap: 6 }}
+                  style={{ padding: "16px 14px", borderRadius: 16, border: "1.5px solid", cursor: "pointer", textAlign: "left" as const, display: "flex", flexDirection: "column" as const, gap: 6, gridColumn: sit.id === "custom" ? "1 / -1" : undefined }}
                 >
                   <span style={{ fontSize: 24 }}>{sit.emoji}</span>
                   <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: isSel ? "#F2EDE7" : "#8A8277", transition: "color 0.18s", lineHeight: 1.2 }}>{sit.label}</span>
